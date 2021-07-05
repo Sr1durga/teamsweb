@@ -30,8 +30,8 @@ export default function Topbar() {
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-          <span className="topbarLink">Homepage</span>
-          <span className="topbarLink"><a href="http://localhost:3000/messenger">Messenger</a></span>
+          <span className="topbarLink"><a href="/videochat">Video Chat</a></span>
+          <span className="topbarLink"><a href="/messenger">Messenger</a></span>
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">

@@ -1,6 +1,8 @@
 const io= require("socket.io")(8800,{
     cors:{
         origin:"http://localhost:3000",
+        methods: [ "GET", "POST" ]
+
     },
 
 }
@@ -24,6 +26,19 @@ const getUser =(userId) =>{
 
 }
     io.on("connection",(socket)=>{
+     
+        //adding web rtc shit 
+        socket.emit("me", socket.id);
+
+
+	socket.on("callUser", ({ userToCall, signalData, from, name }) => {
+		io.to(userToCall).emit("callUser", { signal: signalData, from, name });
+	});
+
+	socket.on("answerCall", (data) => {
+		io.to(data.to).emit("callAccepted", data.signal)
+	});
+
         //when connect 
         console.log("a user connected.")
         //take userId and socketId from user 
@@ -46,6 +61,9 @@ const getUser =(userId) =>{
 
 //when disconnect
         socket.on("disconnect",() =>{
+            socket.broadcast.emit("callEnded")
+
+            console.log("for chat log : below");
             console.log("a user disconnected");
             removeUser(socket.id);
             io.emit("getUsers",users);
