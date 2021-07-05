@@ -12,7 +12,7 @@ const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");
 const router = express.Router();
 const path = require("path");
-
+const cors = require('cors');
 dotenv.config();
 
 mongoose.connect(
@@ -28,6 +28,7 @@ app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
+app.use(cors());
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -52,6 +53,10 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
+
+app.get('/' , (req , res) => {
+  return res.status(201).send({success : true })
+})
 
 app.listen(8090, () => {
   console.log("Backend server is running!");

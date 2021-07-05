@@ -16,14 +16,18 @@ export default function Conversation({conversation,currentUser}) {
         const friendId = conversation.members.find((m)=>m !== currentUser._id)  
     const getUser = async () =>{
        try{
-        const res = await axios("/users?userId ="+friendId);  
+        //const res = await axios(`/api/users//`+friendId); 
+        const res = await axios(`http://localhost:8090/api/users/${friendId}` );  
+         //console.log(res);
         setUser(res.data);
        }catch(err){
          console.log(err);  
        }
     
     };
-     getUser()          },
+     getUser()     
+    //console.log(user);  
+   },
    [currentUser,conversation] );
     return (
         <div className="conversation">

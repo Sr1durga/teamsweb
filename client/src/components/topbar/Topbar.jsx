@@ -1,5 +1,5 @@
 import "./topbar.css";
-import { Search, Person, Chat, Notifications } from "@material-ui/icons";
+import { Search, Person, Chat, Notifications , LockOpenOutlined } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -7,6 +7,11 @@ import { AuthContext } from "../../context/AuthContext";
 export default function Topbar() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+ const handleLogout = () => {
+  localStorage.clear() ; window.location.reload();
+ }
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -26,7 +31,7 @@ export default function Topbar() {
       <div className="topbarRight">
         <div className="topbarLinks">
           <span className="topbarLink">Homepage</span>
-          <span className="topbarLink">Timeline</span>
+          <span className="topbarLink"><a href="http://localhost:3000/messenger">Messenger</a></span>
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">
@@ -40,6 +45,12 @@ export default function Topbar() {
           <div className="topbarIconItem">
             <Notifications />
             <span className="topbarIconBadge">1</span>
+          </div>
+          <div className="topbarIconItem">
+            <button onClick={handleLogout}>
+            <LockOpenOutlined  />
+            </button>
+           
           </div>
         </div>
         <Link to={`/profile/${user.username}`}>

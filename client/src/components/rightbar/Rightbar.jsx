@@ -6,6 +6,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Add, Remove } from "@material-ui/icons";
+import EditIcon from '@material-ui/icons/Edit';
+import TextField from '@material-ui/core/TextField';
+import SaveAltIcon from '@material-ui/icons/SaveAlt';
+import {  useToasts } from 'react-toast-notifications';
+
 
 export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -14,6 +19,41 @@ export default function Rightbar({ user }) {
   const [followed, setFollowed] = useState(
     currentUser.followings.includes(user?.id)
   );
+  
+ const [getAllUsers, setgetAllUsers] = useState([]);
+  const getUsers = async() => {
+    const res =  await axios.get('http://localhost:8090/api/users/getUsers');
+    console.log(res);
+    setgetAllUsers(res.data.data);
+  }
+
+  const { addToast } = useToasts();
+
+   const [expand, setExpand] = useState(false);
+
+   const [city , setCity] = useState("");
+   const [from , setFrom] = useState("");
+
+   const savDets =async () => {
+     
+     
+           try {
+             const res = await axios.post(`http://localhost:8090/api/users/saveDetails/${user._id}`, {
+               city ,
+               from
+             });
+            if(res.data.success === true){
+              //setExpand(!expand);
+              addToast('Update Successfully', { appearance: 'success' , autoDismiss: true });
+              setTimeout(() => {
+                
+                window.location.reload();
+                       } , 1800);
+            }
+           } catch (error) {
+             console.log(error);
+           }
+   }
 
   useEffect(() => {
     const getFriends = async () => {
@@ -25,6 +65,7 @@ export default function Rightbar({ user }) {
       }
     };
     getFriends();
+    getUsers();
   }, [user]);
 
   const handleClick = async () => {
@@ -57,8 +98,8 @@ export default function Rightbar({ user }) {
         <img className="rightbarAd" src="assets/ad.png" alt="" />
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
-          {Users.map((u) => (
-            <Online key={u.id} user={u} />
+          {getAllUsers.map((u) => (
+            <Online key={u.id} userDets={u} />
           ))}
         </ul>
       </>
@@ -78,21 +119,45 @@ export default function Rightbar({ user }) {
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
-            <span className="rightbarInfoValue">{user.city}</span>
+            {expand && <div> <TextField
+          required
+          placeholder="Enter City"
+          onChange={(e) => {setCity(e.target.value)}}
+
+          fullWidth
+          required
+        label="City"
+        value={city}
+        
+        /></div>}
+            {!expand && <span className="rightbarInfoValue">{user.city}</span>}
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInfoValue">{user.from}</span>
+            {expand && <div> <TextField
+          required
+          placeholder="Enter From"
+          onChange={(e) => {setFrom(e.target.value)}}
+          fullWidth
+          required
+        label="From"
+        value={from}
+        
+        /></div>}
+            {!expand && <span className="rightbarInfoValue">{user.from}</span>}
           </div>
+          
           <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">Relationship:</span>
-            <span className="rightbarInfoValue">
-              {user.relationship === 1
-                ? "Single"
-                : user.relationship === 1
-                ? "Married"
-                : "-"}
+           
+            <span className="rightbarInfoValue"  onClick={() => setExpand(!expand)}> 
+            {!expand &&  < EditIcon />}
+            
             </span>
+            <span className="rightbarInfoValue" > 
+            
+            {expand &&  < SaveAltIcon onClick={savDets}/>}
+            </span>
+            
           </div>
         </div>
         <h4 className="rightbarTitle">User friends</h4>
