@@ -16,26 +16,45 @@ const ContextProvider = ({ children }) => {
   const [call, setCall] = useState({});
   const [me, setMe] = useState('');
 
-  const myVideo = useRef();
+  const myVideo = useRef({srcObject : ""});
   const userVideo = useRef();
   const connectionRef = useRef();
+  const [ check , setCheck] = useState(false);
+
+  useEffect(() => {
+    if(!check)return;
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+    .then((currentStream) => {
+      //console.log("hi");
+      console.log("wassup bro");
+      setStream(currentStream);
+      // if(myVideo.current !== undefined){
+         myVideo.current.srcObject = currentStream;
+      // }
+      // let video = myVideo.current;
+      // video.srcObject = currentStream;
+     
+      }).catch((e) => {
+  console.log(e);
+      });
+  },[check] );
+
+ const togglCheck =() =>{
+   setCheck(true);
+ }
 
   useEffect(() => {
     
-    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-      .then((currentStream) => {
-        setStream(currentStream);
-        if(myVideo.current){
-          myVideo.current.srcObject = currentStream;
-        }
-
-        }); 
-        
+   
       
-
-    socket.on('me', (id) => setMe(id));
+   console.log("tf is this ?");
+    socket.on('me', (id) => {
+      console.log("from context " + id);
+      setMe(id);
+    });
 
     socket.on('callUser', ({ from, name: callerName, signal }) => {
+      console.log("calluser socekt")
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
   }, []);
@@ -100,7 +119,7 @@ const ContextProvider = ({ children }) => {
       callUser,
       leaveCall,
       answerCall,
-      
+      togglCheck,
     }}
     >
       {children}

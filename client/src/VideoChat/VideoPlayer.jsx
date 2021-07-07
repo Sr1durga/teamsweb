@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext , useEffect } from 'react';
 import { Grid, Typography, Paper, makeStyles } from '@material-ui/core';
 
 import { SocketContext } from './VideoContext';
@@ -24,8 +24,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const VideoPlayer = () => {
-  const { name, callAccepted, myVideo, userVideo, callEnded, stream, call } = useContext(SocketContext);
+  const { name, callAccepted, myVideo, userVideo, callEnded, stream, call ,togglCheck } = useContext(SocketContext);
   const classes = useStyles();
+
+   console.log(myVideo);
+   //console.log("user :");
+   //console.log(userVideo);
+
+   useEffect(() => {
+     togglCheck();
+   }, []);
 
   return (
     <Grid container className={classes.gridContainer}>

@@ -5,6 +5,7 @@ import Register from "./pages/register/Register";
 import Messenger from "./pages/messenger/Messenger";
 import VideoApp from './VideoChat/VideoApp';
 
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,6 +33,7 @@ function App() {
         <Route path="/profile/:username">
           <Profile />
         </Route>
+        
         <Route path="/videochat">
           <VideoApp />
         </Route>

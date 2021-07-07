@@ -40,11 +40,13 @@ export default function Topbar() {
          {/*<span className="topbarLink"><a href="/messenger">Messenger</a></span> */}
         </div>
         <div className="topbarIcons">
-          <div className="topbarIconItem">
-            {/*<Person />*/}
+        {/* <div className="topbarIconItem">
+            {/*<Person />
             <button onClick={()=>{history.push("/videochat")}}> <VideoCallIcon/> </button>
-            {/*<span className="topbarIconBadge">1</span> */}
-          </div>
+            /*<span className="topbarIconBadge">1</span>
+            </div> */}
+          
+          
           {/*<div className="topbarIconItem">
             <Chat />
             <span className="topbarIconBadge">2</span>
