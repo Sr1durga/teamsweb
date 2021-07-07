@@ -4,6 +4,7 @@ import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
 import Messenger from "./pages/messenger/Messenger";
 import VideoApp from './VideoChat/VideoApp';
+
 import {
   BrowserRouter as Router,
   Switch,

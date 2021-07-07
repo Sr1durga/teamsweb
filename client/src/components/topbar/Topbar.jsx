@@ -3,6 +3,12 @@ import { Search, Person, Chat, Notifications , LockOpenOutlined } from "@materia
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import MessageOutlinedIcon from '@material-ui/icons/MessageOutlined';
+import VideoCallIcon from '@material-ui/icons/VideoCall';
+import { useHistory } from "react-router-dom";
+
+import {Chat28Regular} from "@fluentui/react-icons";
+import ChatBubbleOutlineRoundedIcon from '@material-ui/icons/ChatBubbleOutlineRounded';
 
 export default function Topbar() {
   const { user } = useContext(AuthContext);
@@ -11,7 +17,7 @@ export default function Topbar() {
  const handleLogout = () => {
   localStorage.clear() ; window.location.reload();
  }
-
+ const history = useHistory();
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -30,21 +36,22 @@ export default function Topbar() {
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-          <span className="topbarLink"><a href="/videochat">Video Chat</a></span>
-          <span className="topbarLink"><a href="/messenger">Messenger</a></span>
+         {/* <span className="topbarLink"><a href="/videochat">Video Chat</a></span>*/}
+         {/*<span className="topbarLink"><a href="/messenger">Messenger</a></span> */}
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">
-            <Person />
-            <span className="topbarIconBadge">1</span>
+            {/*<Person />*/}
+            <button onClick={()=>{history.push("/videochat")}}> <VideoCallIcon/> </button>
+            {/*<span className="topbarIconBadge">1</span> */}
           </div>
-          <div className="topbarIconItem">
+          {/*<div className="topbarIconItem">
             <Chat />
             <span className="topbarIconBadge">2</span>
-          </div>
+  </div> */}
           <div className="topbarIconItem">
-            <Notifications />
-            <span className="topbarIconBadge">1</span>
+            {/*<Notifications />*/}
+            <button onClick={()=>{history.push("/messenger")}}> <Chat28Regular primaryFill="white" style={{ backgroundcolor:"transparent"}}/> </button>
           </div>
           <div className="topbarIconItem">
             <button onClick={handleLogout}>

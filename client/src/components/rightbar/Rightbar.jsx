@@ -11,7 +11,6 @@ import TextField from '@material-ui/core/TextField';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import {  useToasts } from 'react-toast-notifications';
 
-
 export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
@@ -89,13 +88,16 @@ export default function Rightbar({ user }) {
   const HomeRightbar = () => {
     return (
       <>
-        <div className="birthdayContainer">
+        {/*<div className="birthdayContainer">
           <img className="birthdayImg" src="assets/gift.png" alt="" />
-          <span className="birthdayText">
-            <b>Pola Foster</b> and <b>3 other friends</b> have a birhday today.
+         *<span className="birthdayText">
+            
+          <b>Pola Foster</b> and <b>3 other friends</b> have a birhday today.
           </span>
-        </div>
-        <img className="rightbarAd" src="assets/ad.png" alt="" />
+          
+           </div>
+       
+        <img className="rightbarAd" src="assets/ad.png" alt="" />*/}
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
           {getAllUsers.map((u) => (
