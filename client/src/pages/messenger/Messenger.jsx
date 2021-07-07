@@ -7,6 +7,8 @@ import { useContext,useState,useEffect,useRef } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { io } from "socket.io-client";
+
+
 export default function Messenger() {
     const [conversations, setConversations] = useState([]);
     const [currentChat, setCurrentChat] = useState(null);
@@ -168,6 +170,8 @@ export default function Messenger() {
             
                 <div className="chatOnline">
                 <div className="chatOnlineWrapper">
+                    <div>check</div>
+                    
                     <ChatOnline onlineUsers = {onlineUsers} currentId ={user._id}
                      setCurrentChat={setCurrentChat}
                     

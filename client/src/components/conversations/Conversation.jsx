@@ -1,6 +1,7 @@
 import "./conversation.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import VideoChatModal from './VideoChatModal';
 
 export default function Conversation({conversation,currentUser}) {
     const [user,setUser] =useState(null);
@@ -37,6 +38,7 @@ export default function Conversation({conversation,currentUser}) {
             : PF + "person/noAvatar.png"}
          alt=" "/>
         <span className ="conversationName">{user?.username}</span>
+        <span>< VideoChatModal name={user?.username}/></span>
         </div>
     )
 }
