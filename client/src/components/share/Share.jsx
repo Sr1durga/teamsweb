@@ -9,6 +9,8 @@ import {
 import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
+import {PictureInPicture24Regular} from "@fluentui/react-icons";
+import { Share20Filled } from "@fluentui/react-icons";
 
 export default function Share() {
   const { user } = useContext(AuthContext);
@@ -68,7 +70,7 @@ export default function Share() {
         <form className="shareBottom" onSubmit={submitHandler}>
           <div className="shareOptions">
             <label htmlFor="file" className="shareOption">
-              <PermMedia htmlColor="tomato" className="shareIcon" />
+              <PictureInPicture24Regular  className="shareIcon" />
               <span className="shareOptionText">Photo or Video</span>
               <input
                 style={{ display: "none" }}
@@ -92,7 +94,7 @@ export default function Share() {
         </div>*/}
         </div> 
           <button className="shareButton" type="submit">
-            Share
+            <Share20Filled/>
           </button>
         </form>
       </div>

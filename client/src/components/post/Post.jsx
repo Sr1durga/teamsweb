@@ -5,7 +5,9 @@ import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import {ThumbDislike24Filled} from '@fluentui/react-icons';
 
+import {ThumbLike24Filled} from '@fluentui/react-icons';
 export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
@@ -61,18 +63,12 @@ export default function Post({ post }) {
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <img
-              className="likeIcon"
-              src={`${PF}like.png`}
-              onClick={likeHandler}
-              alt=""
-            />
-            <img
-              className="likeIcon"
-              src={`${PF}heart.png`}
-              onClick={likeHandler}
-              alt=""
-            />
+          <button onClick={likeHandler}><ThumbLike24Filled  /></button>
+            
+              
+            <button onClick={likeHandler}><ThumbDislike24Filled  /></button>
+            
+            
             <span className="postLikeCounter">{like} people like it</span>
           </div>
           <div className="postBottomRight">

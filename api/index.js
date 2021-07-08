@@ -1,3 +1,4 @@
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -13,6 +14,7 @@ const messageRoute = require("./routes/messages");
 const router = express.Router();
 const path = require("path");
 const cors = require('cors');
+
 dotenv.config();
 
 mongoose.connect(
@@ -29,6 +31,7 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 app.use(cors());
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {

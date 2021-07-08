@@ -1,14 +1,15 @@
 import "./topbar.css";
-import { Search, Person, Chat, Notifications , LockOpenOutlined } from "@material-ui/icons";
+import { Search, LockOpenOutlined } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import MessageOutlinedIcon from '@material-ui/icons/MessageOutlined';
-import VideoCallIcon from '@material-ui/icons/VideoCall';
 import { useHistory } from "react-router-dom";
-
 import {Chat28Regular} from "@fluentui/react-icons";
-import ChatBubbleOutlineRoundedIcon from '@material-ui/icons/ChatBubbleOutlineRounded';
+import {SignOut24Regular} from "@fluentui/react-icons";
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
+import React , {useState , useEffect} from 'react';
+import axios from "axios";
 
 export default function Topbar() {
   const { user } = useContext(AuthContext);
@@ -17,21 +18,75 @@ export default function Topbar() {
  const handleLogout = () => {
   localStorage.clear() ; window.location.reload();
  }
+
+  const onSearchChange = (e , values) => {
+    console.log(values);
+    const url = '/profile/'+values;
+    history.push(url);
+  }
+
+  const [getAllUsers, setgetAllUsers] = useState([]);
+  const getUsers = async() => {
+    const res =  await axios.get('http://localhost:8090/api/users/getUsers');
+    console.log(res);
+    setgetAllUsers(res.data.data);
+
+  }
+
+
+  useEffect(() => {
+    getUsers();
+  }, [])
+
  const history = useHistory();
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">MICROSOFT TEAMS</span>
+          <span className="logo">Microsoft Teams</span>
         </Link>
       </div>
+      {/*<Autocomplete
+        freeSolo
+        id="free-solo-2-demo"
+        disableClearable
+        options={getAllUsers.map((option) => option.username)}
+        onChange={onSearchChange}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Search input"
+            margin="normal"
+            variant="outlined"
+            InputProps={{ ...params.InputProps, type: 'search' }}
+          />
+        )}
+      />*/}
       <div className="topbarCenter">
         <div className="searchbar">
           <Search className="searchIcon" />
-          <input
+          {/* <input
             placeholder="Search for friend, post or video"
             className="searchInput"
+          /> */}
+          <Autocomplete className="searchAuto"
+        freeSolo
+        id="free-solo-2-demo"
+        disableClearable
+        options={getAllUsers.map((option) => option.username)}
+        onChange={onSearchChange}
+        renderInput={(params) => (
+          <TextField className ="searchInput"
+            {...params}
+            label="Search"
+            display="flex"
+           
+           
+            InputProps={{ ...params.InputProps, type: 'search' ,size:25}}
           />
+        )}
+        />
+         
         </div>
       </div>
       <div className="topbarRight">
@@ -57,7 +112,7 @@ export default function Topbar() {
           </div>
           <div className="topbarIconItem">
             <button onClick={handleLogout}>
-            <LockOpenOutlined  />
+            <SignOut24Regular primaryFill="white" style={{ backgroundcolor:"transparent"}} />
             </button>
            
           </div>

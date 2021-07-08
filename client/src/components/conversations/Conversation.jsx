@@ -2,7 +2,8 @@ import "./conversation.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import VideoChatModal from './VideoChatModal';
-
+import {VideoAdd24Regular} from '@fluentui/react-icons';
+import {Link} from 'react-router-dom';
 export default function Conversation({conversation,currentUser}) {
     const [user,setUser] =useState(null);
     
@@ -38,7 +39,11 @@ export default function Conversation({conversation,currentUser}) {
             : PF + "person/noAvatar.png"}
          alt=" "/>
         <span className ="conversationName">{user?.username}</span>
-        <span>< VideoChatModal name={user?.username}/></span>
+        <span><Link  onClick={()=> window.open("/videochat", "_blank")}>
+
+            <VideoAdd24Regular  primaryFill="#464775"/>
+            </Link></span>
+        
         </div>
     )
 }

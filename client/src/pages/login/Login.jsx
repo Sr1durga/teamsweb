@@ -2,7 +2,8 @@ import { useContext, useRef } from "react";
 import "./login.css";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress , Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const email = useRef();
@@ -50,6 +51,9 @@ export default function Login() {
                 "Log In"
               )}
             </button>
+            <Typography>
+                        Dont have and account? <Link to='/register'>Register</Link>
+                      </Typography>
             <span className="loginForgot">Forgot Password?</span>
             <button className="loginRegisterButton">
               {isFetching ? (
