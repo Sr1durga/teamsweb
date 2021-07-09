@@ -44,12 +44,13 @@
 .searchInput {
   border: none;
   width: 70%;
-  
+  margin-top: 0%;
   margin-bottom:30px;
   align-items: center;
 }
 .searchAuto{
-  width: 100%;;
+  width: 100%;
+  margin-bottom:20px;
 }
 
 .searchInput:focus {
@@ -73,6 +74,8 @@
 .topbarIcons {
   display: flex;
   background-color: transparent;
+  margin-right: 40px;
+  margin-left: 50%;
 }
 button {
   border:none;
@@ -84,6 +87,7 @@ button {
   cursor: pointer;
   position: relative;
   background-color: "transparent";
+  margin-right: none;
   
 }
 

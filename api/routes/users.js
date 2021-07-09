@@ -17,6 +17,23 @@ router.get("/getUsers" , async (req , res) => {
   
 });
 
+
+//put todo list ( to be done)
+router.post('/todo/:userId' ,  async (req , res )=> {
+  try {
+    const user = await User.findById(req.params.userId);
+  if(user){
+
+  const resp = await user.findOneAndUpdate({ "$set" :{ todo: [{text: req.body.text , completed:req.body.completed , createdAt : req.body.createdAt }]} });
+  res.status(201).json({success : true , message : "updated" , data : resp});
+  }
+  } catch (error) {
+    res.status(403).json("pls try next decade");
+
+  }
+})
+
+
 //update user
 router.put("/:id", async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {

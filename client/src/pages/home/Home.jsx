@@ -9,15 +9,15 @@ import "./home.css"
 export default function Home() {
 
 
-  const [render, setRender] = useState(2);
+  
   return (
     <>
       <Topbar />
       <div className="homeContainer">
         <Sidebar />
 
-        {render ===1 &&  <Feed/>}
-        {render ===2 &&  <CalendarNew/>}
+      <Feed/>
+        {/* {render ===2 &&  <CalendarNew/>} */}
         
         
         <Rightbar/>

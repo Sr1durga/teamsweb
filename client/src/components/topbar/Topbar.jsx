@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
-import {Chat28Regular} from "@fluentui/react-icons";
+import  {Home24Regular} from "@fluentui/react-icons";
 import {SignOut24Regular} from "@fluentui/react-icons";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
@@ -108,7 +108,7 @@ export default function Topbar() {
   </div> */}
           <div className="topbarIconItem">
             {/*<Notifications />*/}
-            <button onClick={()=>{history.push("/messenger")}}> <Chat28Regular primaryFill="white" style={{ backgroundcolor:"transparent"}}/> </button>
+            <button onClick={()=>{history.push("/")}}> <Home24Regular primaryFill="white" style={{ backgroundcolor:"transparent"}}/> </button>
           </div>
           <div className="topbarIconItem">
             <button onClick={handleLogout}>

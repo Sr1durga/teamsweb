@@ -14,9 +14,10 @@ import { Users } from "../../dummyData";
 import { useHistory } from "react-router-dom";
 import {Chat28Regular} from "@fluentui/react-icons";
 import {Home28Regular} from "@fluentui/react-icons";
+import {CalendarToday28Regular} from "@fluentui/react-icons";
 
 
-export default function Sidebar() {
+export default function Sidebar({setRender}) {
   const history = useHistory();
   return (
     <div className="sidebar">
@@ -25,6 +26,11 @@ export default function Sidebar() {
           <li className="sidebarListItem">
           <button onClick={()=>{history.push("/")}}>
             <Home28Regular className="sidebarIcon" primaryFill="white" style={{ backgroundcolor:"transparent"}}/></button> 
+            <span className="sidebarListItemText"></span>
+          </li>
+          <li className="sidebarListItem">
+          <button onClick={()=>{history.push("/calendar")}}>
+            <CalendarToday28Regular className="sidebarIcon" primaryFill="white" style={{ backgroundcolor:"transparent"}}/></button> 
             <span className="sidebarListItemText"></span>
           </li>
           <li className="sidebarListItem">
