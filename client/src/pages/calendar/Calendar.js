@@ -3,7 +3,9 @@ import "./calendar.css";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Topbar from '../../components/topbar/Topbar';
-import Sidebar from '../../components/sidebar/Sidebar'
+import Sidebar from '../../components/sidebar/Sidebar';
+import TaskNew from '../../components/tasknew/TaskNew';
+
 function CalendarNew() {
 
     const [value, onChange] = useState(new Date());
@@ -21,6 +23,11 @@ function CalendarNew() {
         className="react-calendar"
       />
         </div>
+        <div className ="todo">
+          <TaskNew/>
+        </div>
+        
+
       </div>
     </div>
       </>

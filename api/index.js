@@ -11,9 +11,11 @@ const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
 const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");
+const tasksRoute = require("./routes/tasks");
 const router = express.Router();
 const path = require("path");
 const cors = require('cors');
+const bodyParser = require("body-parser");
 
 dotenv.config();
 
@@ -27,6 +29,7 @@ mongoose.connect(
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 //middleware
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
@@ -56,6 +59,8 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
+app.use("/api/tasks", tasksRoute);
+
 
 app.get('/' , (req , res) => {
   return res.status(201).send({success : true })
