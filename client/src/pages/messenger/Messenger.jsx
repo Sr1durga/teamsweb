@@ -3,12 +3,12 @@ import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Conversation from "../../components/conversations/Conversation";
 import Message from "../../components/message/Message";
-import ChatOnline from "../../components/chatOnline/ChatOnline";
+
 import { useContext, useState, useEffect, useRef } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { io } from "socket.io-client";
-import { Send20Regular } from "@fluentui/react-icons";
+import { Send24Filled } from "@fluentui/react-icons";
 
 export default function Messenger() {
     const [conversations, setConversations] = useState([]);
@@ -158,8 +158,10 @@ export default function Messenger() {
                                         value={newMessage}>
 
                                     </textarea>
-                                    <button className="chatSubmitutton" onClick={handleSubmit}><Send20Regular />
+                                    <div className ="buttonspace">
+                                    <button className="chatSubmitButton" onClick={handleSubmit}><Send24Filled primary fill ={"black"} />
                                     </button>
+                                    </div>
 
                                 </div>
                             </>
@@ -172,16 +174,7 @@ export default function Messenger() {
 
 
 
-                {/* <div className="chatOnlineWrapper">
-                    
-                    
-                    <ChatOnline onlineUsers = {onlineUsers} currentId ={user._id}
-                     setCurrentChat={setCurrentChat}
-                    
-                    />
-                   
-                    
-                            </div>*/}
+               
 
 
 

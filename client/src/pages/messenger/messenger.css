@@ -41,13 +41,18 @@
 }
 
 .chatSubmitButton {
+  margin-left:none;
   width: 70px;
   height: 40px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: teal;
-  color: white;
+  
+  
+}
+.buttonspace{
+  margin-left:none;
+  margin-right:40px;
 }
 
 
@@ -60,10 +65,10 @@ margin-right:70px;
 }
 
 .chatMenuWrapper,
-.chatBoxWrapper,
-.chatOnlineWrapper {
+.chatBoxWrapper
+{
 padding: 10px;
-height: 100%;
+
 
 }
 

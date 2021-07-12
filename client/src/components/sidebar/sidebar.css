@@ -2,8 +2,9 @@
   
   display:flex;
   overflow-y: scroll;
+  
  
- width: 70px;
+width: 70px;
  max-width: 100px;
   background-color:#F0F0F0;
   

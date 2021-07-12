@@ -30,11 +30,10 @@ export default function Profile() {
             <div className="profileCover">
               <img
                 className="profileCoverImg"
-                src={
-                  user.coverPicture
-                    ? PF + user.coverPicture
-                    : PF + "person/teams.png"
-                }
+                src=
+                  
+                      "https://www.klarinetsolutions.com/wp-content/uploads/teams-govern.jpg"
+                
                 alt=""
               />
               <img
