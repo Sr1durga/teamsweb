@@ -19,7 +19,7 @@ export default function Conversation({conversation,currentUser}) {
     const getUser = async () =>{
        try{
         //const res = await axios(`/api/users//`+friendId); 
-        const res = await axios(`http://localhost:8090/api/users/${friendId}` );  
+        const res = await axios(`/users/${friendId}` );  
          //console.log(res);
         setUser(res.data);
        }catch(err){

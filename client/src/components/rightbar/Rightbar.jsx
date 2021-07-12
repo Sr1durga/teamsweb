@@ -21,7 +21,7 @@ export default function Rightbar({ user }) {
   
  const [getAllUsers, setgetAllUsers] = useState([]);
   const getUsers = async() => {
-    const res =  await axios.get('http://localhost:8090/api/users/getUsers');
+    const res =  await axios.get('/users/getUsers');
     console.log(res);
     setgetAllUsers(res.data.data);
   }
@@ -37,7 +37,7 @@ export default function Rightbar({ user }) {
      
      
            try {
-             const res = await axios.post(`http://localhost:8090/api/users/saveDetails/${user._id}`, {
+             const res = await axios.post(`/users/saveDetails/${user._id}`, {
                city ,
                from
              });

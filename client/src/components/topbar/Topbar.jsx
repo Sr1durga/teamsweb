@@ -27,7 +27,7 @@ export default function Topbar() {
 
   const [getAllUsers, setgetAllUsers] = useState([]);
   const getUsers = async() => {
-    const res =  await axios.get('http://localhost:8090/api/users/getUsers');
+    const res =  await axios.get('/users/getUsers');
     console.log(res);
     setgetAllUsers(res.data.data);
 
@@ -46,29 +46,11 @@ export default function Topbar() {
           <span className="logo">Microsoft Teams</span>
         </Link>
       </div>
-      {/*<Autocomplete
-        freeSolo
-        id="free-solo-2-demo"
-        disableClearable
-        options={getAllUsers.map((option) => option.username)}
-        onChange={onSearchChange}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Search input"
-            margin="normal"
-            variant="outlined"
-            InputProps={{ ...params.InputProps, type: 'search' }}
-          />
-        )}
-      />*/}
+      
       <div className="topbarCenter">
         <div className="searchbar">
           
-          {/* <input
-            placeholder="Search for friend, post or video"
-            className="searchInput"
-          /> */}
+         
           <Autocomplete className="searchAuto"
         freeSolo
         id="free-solo-2-demo"

@@ -1,5 +1,5 @@
 import axios from "axios";
-const apiUrl = "http://localhost:8090/api/tasks";
+const apiUrl = "/tasks";
 
 export function getTasks() {
     return axios.get(apiUrl);
