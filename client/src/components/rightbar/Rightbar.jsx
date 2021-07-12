@@ -88,13 +88,16 @@ export default function Rightbar({ user }) {
   const HomeRightbar = () => {
     return (
       <>
-        
+        <div className="peopleContainer">
         <div className="rightbarTitle">People around you</div>
+        <div className="peopleContainer"></div>
+
         <ul className="rightbarFriendList">
           {getAllUsers.map((u) => (
             <Online key={u.id} userDets={u} />
           ))}
         </ul>
+        </div>
       </>
     );
   };

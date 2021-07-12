@@ -1,11 +1,15 @@
+
 const Task = require("../models/task");
+
 const express = require("express");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
     try {
         const task = await new Task(req.body).save();
+        
         res.send(task);
+       
     } catch (error) {
         res.send(error);
     }
@@ -13,7 +17,10 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
     try {
-        const tasks = await Task.find();
+        console.log('inside get');
+        console.log(req.query.userId);
+        
+        const tasks = await Task.find({"userId":req.query.userId});
         res.send(tasks);
     } catch (error) {
         res.send(error);

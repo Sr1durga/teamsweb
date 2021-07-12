@@ -1,5 +1,5 @@
 import "./topbar.css";
-import { Search, LockOpenOutlined } from "@material-ui/icons";
+import { Search } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -92,6 +92,9 @@ export default function Topbar() {
         </div>
       </div>
       <div className="topbarRight">
+     
+    
+   
         <div className="topbarLinks">
          {/* <span className="topbarLink"><a href="/videochat">Video Chat</a></span>*/}
          {/*<span className="topbarLink"><a href="/messenger">Messenger</a></span> */}
@@ -109,8 +112,11 @@ export default function Topbar() {
         
         </Link>
        
+       
         </div>
         <div className="topbarIcons">
+        <div class="vertLine">
+        
         {/* <div className="topbarIconItem">
             {/*<Person />
             <button onClick={()=>{history.push("/videochat")}}> <VideoCallIcon/> </button>
@@ -122,9 +128,11 @@ export default function Topbar() {
             <Chat />
             <span className="topbarIconBadge">2</span>
   </div> */}
+  
           <div className="topbarIconItema">
             {/*<Notifications />*/}
             <button onClick={()=>{history.push("/")}}> <Home28Filled primaryFill="white" style={{ backgroundcolor:"transparent"}}/> </button>
+          </div>
           </div>
           <div className="topbarIconItemb">
             <button onClick={handleLogout}>

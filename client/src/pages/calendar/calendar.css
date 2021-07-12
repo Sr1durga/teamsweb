@@ -1,7 +1,32 @@
-.feed{
-    flex:5.5
-}
 
-.feedWrapper{
-    padding: 20px;
+.pageContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+.container {
+    width:200px;
+    height:190px;
+    background-color:green;
+    padding-top:20px;
+    padding-left:15px;
+    padding-right:15px;
+}
+#calendar {
+    position: absolute;
+    top: 40px;
+    left : 80px;
+   
+   
+   
+}
+#todo {
+
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    width:350px;
+    height:160px;
+    
+    margin-left:20px;
 }

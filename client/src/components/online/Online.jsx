@@ -2,7 +2,8 @@ import "./online.css";
 import Button from '@material-ui/core/Button';
 import { useContext } from "react";
 import axios from'axios';
-import AddIcon from '@material-ui/icons/Add';
+
+import {Add16Filled } from '@fluentui/react-icons';
 import { AuthContext } from "../../context/AuthContext";
 import {  useToasts } from 'react-toast-notifications';
 import {  useHistory} from 'react-router-dom';
@@ -72,6 +73,7 @@ const history = useHistory();
  
   return (
     
+    <div className="friendsContainer">
     <li className="rightbarFriend">
       <div className="rightbarProfileImgContainer">
         <img className="rightbarProfileImg" 
@@ -81,18 +83,26 @@ const history = useHistory();
          alt=" "/>
         <span className="rightbarOnline"></span>
       </div>
-      <span className="rightbarUsername">{userDets.username}</span>
+      <div className="nameContainer">
+      <span className="rightbarUsername">{userDets.username} 
+
+      </span>
+      </div>
+      <div className="friendsSpace"> </div>
       <span>
+      
      <div className="rightbarButton">
      <Button onClick={addfollow}>
-     <AddIcon/>
+       
+     {<Add16Filled primaryFill="white"/>}
      </Button>
      </div>
      </span>
-
+     
 
       
     </li>
+    </div>
     
   );
 

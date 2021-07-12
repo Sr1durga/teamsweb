@@ -10,6 +10,11 @@
   z-index: 999;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.vertLine {
+  background: white;
+  border-left:-8px #ffffff;    /* line 1 pixel width, length of "Some content" */
+  width:2px;
+}
 
 .topbarLeft {
   flex: 3;

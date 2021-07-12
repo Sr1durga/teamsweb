@@ -13,23 +13,28 @@ function CalendarNew() {
     return (
       <>
       <Topbar />
-      <div className="profile">
+      <div className="pageContainer">
+      {/*<div className="profile">*/}
+  
         <Sidebar />
-        <div className="feed">
-        <div className="feedWrapper">
-        <Calendar
-        onChange={onChange}
-        value={value}
-        className="react-calendar"
-      />
-        </div>
-        <div className ="todo">
-          <TaskNew/>
-        </div>
+       
+       
+       <div id="calendar">
+       <Calendar
+       onChange={onChange}
+       value={value}
+       className="react-calendar"
+     />
+       </div>
+       <div id ="todo">
+         <TaskNew/>
+       </div>
+        
+        
         
 
       </div>
-    </div>
+    
       </>
         
     )

@@ -1,11 +1,13 @@
 .sidebar {
   
-  height: calc(100vh - 30px);
+  display:flex;
   overflow-y: scroll;
-  position: sticky;
-  top: 50px;
+ 
+ width: 70px;
+ max-width: 100px;
   background-color:#F0F0F0;
-  width: 70px;
+  
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -20,6 +22,7 @@
 
 .sidebarWrapper {
   padding: 5px;
+  width:30px;
 }
 
 .sidebarList {

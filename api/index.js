@@ -16,6 +16,9 @@ const router = express.Router();
 const path = require("path");
 const cors = require('cors');
 const bodyParser = require("body-parser");
+// var http = require('http').createServer(app);
+// var io = require('socket.io')(http);
+
 
 dotenv.config();
 
@@ -65,6 +68,17 @@ app.use("/api/tasks", tasksRoute);
 app.get('/' , (req , res) => {
   return res.status(201).send({success : true })
 })
+
+
+
+
+
+
+// http.listen(8090, function() {
+//   var host = http.address().address
+//   var port = http.address().port
+//   console.log('App listening at http://%s:%s', host, port)
+// });
 
 app.listen(8090, () => {
   console.log("Backend server is running!");
