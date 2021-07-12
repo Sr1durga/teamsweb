@@ -1,5 +1,6 @@
 import "./messenger.css";
 import Topbar from "../../components/topbar/Topbar";
+import Sidebar from "../../components/sidebar/Sidebar";
 import Conversation from "../../components/conversations/Conversation";
 import Message from "../../components/message/Message";
 import ChatOnline from "../../components/chatOnline/ChatOnline";
@@ -7,7 +8,7 @@ import { useContext,useState,useEffect,useRef } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { io } from "socket.io-client";
-
+import { Send20Regular } from "@fluentui/react-icons";
 
 export default function Messenger() {
     const [conversations, setConversations] = useState([]);
@@ -111,7 +112,10 @@ export default function Messenger() {
              <>
         
             <Topbar/>
+
+           
             <div className="messenger">
+                <Sidebar/>
                 <div className="chatMenu">
                     <div className="chatMenuWrapper"> 
                     <input placeholder="Search for friends" className="chatMenuInput" />
@@ -130,7 +134,7 @@ export default function Messenger() {
 
                     
                 </div>
-                <div className="chatBox">
+               
                 <div className="chatBoxWrapper">
                     {
                         currentChat ?(
@@ -154,7 +158,7 @@ export default function Messenger() {
                          value ={newMessage}>
 
                          </textarea>
-                <button className="chatSubmitutton" onClick={handleSubmit}>Send
+                <button className="chatSubmitutton" onClick={handleSubmit}><Send20Regular/>
                 </button>
                
                 </div>
@@ -165,12 +169,11 @@ export default function Messenger() {
                         
                 
                 </div>
-                </div>
-
+                
             
-                <div className="chatOnline">
-                <div className="chatOnlineWrapper">
-                    <div>check</div>
+                
+               {/* <div className="chatOnlineWrapper">
+                    
                     
                     <ChatOnline onlineUsers = {onlineUsers} currentId ={user._id}
                      setCurrentChat={setCurrentChat}
@@ -178,9 +181,9 @@ export default function Messenger() {
                     />
                    
                     
-                </div>
+                            </div>*/}
 
-                </div>
+                
                 
             </div>
             

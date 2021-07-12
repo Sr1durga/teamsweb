@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const apiUrl = "http://localhost:8090/api/tasks";
 
 export function getTasks() {
@@ -6,6 +7,7 @@ export function getTasks() {
 }
 
 export function addTask(task) {
+    
     return axios.post(apiUrl, task);
 }
 

@@ -1,20 +1,9 @@
 import "./sidebar.css";
-import {
-  RssFeed,
-  Chat,
-  PlayCircleFilledOutlined,
-  Group,
-  Bookmark,
-  HelpOutline,
-  WorkOutline,
-  Event,
-  School,
-} from "@material-ui/icons";
 import { Users } from "../../dummyData";
 import { useHistory } from "react-router-dom";
-import {Chat28Regular} from "@fluentui/react-icons";
-import {Home28Regular} from "@fluentui/react-icons";
-import {CalendarToday28Regular} from "@fluentui/react-icons";
+import {Chat28Filled} from "@fluentui/react-icons";
+import {Home28Filled} from "@fluentui/react-icons";
+import {CalendarToday28Filled} from "@fluentui/react-icons";
 
 
 export default function Sidebar({setRender}) {
@@ -25,16 +14,16 @@ export default function Sidebar({setRender}) {
         <ul className="sidebarList">
           <li className="sidebarListItem">
           <button onClick={()=>{history.push("/")}}>
-            <Home28Regular className="sidebarIcon" primaryFill="white" style={{ backgroundcolor:"transparent"}}/></button> 
+            <Home28Filled className="sidebarIcon" primaryFill="gray" style={{ backgroundcolor:"transparent"}}/></button> 
             <span className="sidebarListItemText"></span>
           </li>
           <li className="sidebarListItem">
           <button onClick={()=>{history.push("/calendar")}}>
-            <CalendarToday28Regular className="sidebarIcon" primaryFill="white" style={{ backgroundcolor:"transparent"}}/></button> 
+            <CalendarToday28Filled className="sidebarIcon" primaryFill="gray" style={{ backgroundcolor:"transparent"}}/></button> 
             <span className="sidebarListItemText"></span>
           </li>
           <li className="sidebarListItem">
-          <button onClick={()=>{history.push("/messenger")}}> <Chat28Regular className="sidebarIcon" primaryFill="white" style={{ backgroundcolor:"transparent"}}/> </button>
+          <button onClick={()=>{history.push("/messenger")}}> <Chat28Filled className="sidebarIcon" primaryFill="gray" style={{ backgroundcolor:"transparent"}}/> </button>
             
             {/*<span className="sidebarListItemText"> </span>*/}
           </li>

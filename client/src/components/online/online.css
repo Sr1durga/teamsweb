@@ -25,6 +25,12 @@
       top: -2px;
       right: 0;
       border: 2px solid white;
+      margin-left: 90%;
+  }
+  .rightbarButton{
+    
+    margin-right: -350px;
+
   }
   
   .rightbarUsername{

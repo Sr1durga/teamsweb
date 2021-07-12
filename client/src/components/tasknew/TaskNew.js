@@ -4,6 +4,7 @@ import { Paper, TextField } from "@material-ui/core";
 import { Checkbox, Button } from "@material-ui/core";
 import "./TaskNew.css";
 
+
 class TaskNew extends Tasks {
     state = { tasks: [], currentTask: "" };
     render() {
@@ -26,6 +27,9 @@ class TaskNew extends Tasks {
                             onChange={this.handleChange}
                             placeholder="Add New TO-DO"
                         />
+                        {/*<TextField
+                          type="hidden"  id="userId" name="userId" value="60e19e14de5ad76c18a2a5fa"
+                        />*/}
                         <Button
                             style={{ height: "40px" }}
                             color="primary"
@@ -35,7 +39,7 @@ class TaskNew extends Tasks {
                             Add task
                         </Button>
                     </form>
-                    <div>
+                    <div> 
                         {tasks.map((task) => (
                             <Paper
                                 key={task._id}

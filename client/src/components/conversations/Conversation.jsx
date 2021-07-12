@@ -1,7 +1,7 @@
 import "./conversation.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import VideoChatModal from './VideoChatModal';
+
 import {VideoAdd24Regular} from '@fluentui/react-icons';
 import {Link} from 'react-router-dom';
 export default function Conversation({conversation,currentUser}) {

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
-import  {Home24Regular} from "@fluentui/react-icons";
-import {SignOut24Regular} from "@fluentui/react-icons";
+import  {Home28Filled} from "@fluentui/react-icons";
+import {LockOpen28Filled } from "@fluentui/react-icons";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import React , {useState , useEffect} from 'react';
@@ -64,7 +64,7 @@ export default function Topbar() {
       />*/}
       <div className="topbarCenter">
         <div className="searchbar">
-          <Search className="searchIcon" />
+          
           {/* <input
             placeholder="Search for friend, post or video"
             className="searchInput"
@@ -84,8 +84,10 @@ export default function Topbar() {
            
             InputProps={{ ...params.InputProps, type: 'search' ,size:25}}
           />
+         
         )}
         />
+         <Search className="searchIcon" />
          
         </div>
       </div>
@@ -93,6 +95,20 @@ export default function Topbar() {
         <div className="topbarLinks">
          {/* <span className="topbarLink"><a href="/videochat">Video Chat</a></span>*/}
          {/*<span className="topbarLink"><a href="/messenger">Messenger</a></span> */}
+       
+        <Link to={`/profile/${user?.username}`}>
+          <img
+            src={
+              user?.profilePicture
+                ? PF + user.profilePicture
+                : PF + "person/noAvatar.png"
+            }
+            alt=""
+            className="topbarImg"
+          />
+        
+        </Link>
+       
         </div>
         <div className="topbarIcons">
         {/* <div className="topbarIconItem">
@@ -106,28 +122,28 @@ export default function Topbar() {
             <Chat />
             <span className="topbarIconBadge">2</span>
   </div> */}
-          <div className="topbarIconItem">
+          <div className="topbarIconItema">
             {/*<Notifications />*/}
-            <button onClick={()=>{history.push("/")}}> <Home24Regular primaryFill="white" style={{ backgroundcolor:"transparent"}}/> </button>
+            <button onClick={()=>{history.push("/")}}> <Home28Filled primaryFill="white" style={{ backgroundcolor:"transparent"}}/> </button>
           </div>
-          <div className="topbarIconItem">
+          <div className="topbarIconItemb">
             <button onClick={handleLogout}>
-            <SignOut24Regular primaryFill="white" style={{ backgroundcolor:"transparent"}} />
+            <LockOpen28Filled  primaryFill="white" style={{ backgroundcolor:"transparent"}} />
             </button>
            
           </div>
         </div>
-        <Link to={`/profile/${user.username}`}>
+        {/*<Link to={`/profile/${user?.username}`}>
           <img
             src={
-              user.profilePicture
+              user?.profilePicture
                 ? PF + user.profilePicture
                 : PF + "person/noAvatar.png"
             }
             alt=""
             className="topbarImg"
           />
-        </Link>
+          </Link>*/}
       </div>
     </div>
   );

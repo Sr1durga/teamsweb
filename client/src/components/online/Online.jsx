@@ -2,7 +2,6 @@ import "./online.css";
 import Button from '@material-ui/core/Button';
 import { useContext } from "react";
 import axios from'axios';
-import ChatIcon from '@material-ui/icons/Chat';
 import AddIcon from '@material-ui/icons/Add';
 import { AuthContext } from "../../context/AuthContext";
 import {  useToasts } from 'react-toast-notifications';
@@ -84,13 +83,15 @@ const history = useHistory();
       </div>
       <span className="rightbarUsername">{userDets.username}</span>
       <span>
-     
+     <div className="rightbarButton">
      <Button onClick={addfollow}>
      <AddIcon/>
      </Button>
+     </div>
+     </span>
 
 
-      </span>
+      
     </li>
     
   );
