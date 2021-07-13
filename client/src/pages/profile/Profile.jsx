@@ -14,7 +14,7 @@ export default function Profile() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${username}`);
+      const res = await axios.get(`/api/users?username=${username}`);
       setUser(res.data);
     };
     fetchUser();
@@ -30,11 +30,10 @@ export default function Profile() {
             <div className="profileCover">
               <img
                 className="profileCoverImg"
-                src={
-                  user.coverPicture
-                    ? PF + user.coverPicture
-                    : PF + "person/noCover.png"
-                }
+                src=
+                  
+                      "https://www.klarinetsolutions.com/wp-content/uploads/teams-govern.jpg"
+                
                 alt=""
               />
               <img

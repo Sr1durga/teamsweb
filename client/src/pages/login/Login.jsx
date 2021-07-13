@@ -2,7 +2,8 @@ import { useContext, useRef } from "react";
 import "./login.css";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress , Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const email = useRef();
@@ -21,9 +22,9 @@ export default function Login() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Lamasocial</h3>
+          <h3 className="loginLogo">Microsoft Teams</h3>
           <span className="loginDesc">
-            Connect with friends and the world around you on Lamasocial.
+            Connect with friends and the world around you on Teams
           </span>
         </div>
         <div className="loginRight">
@@ -50,6 +51,9 @@ export default function Login() {
                 "Log In"
               )}
             </button>
+            <Typography>
+                        Dont have an account? <Link to='/register'>Register</Link>
+                      </Typography>
             <span className="loginForgot">Forgot Password?</span>
             <button className="loginRegisterButton">
               {isFetching ? (

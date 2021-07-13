@@ -1,11 +1,15 @@
 import "./rightbar.css";
-import { Users } from "../../dummyData";
+
 import Online from "../online/Online";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Add, Remove } from "@material-ui/icons";
+import EditIcon from '@material-ui/icons/Edit';
+import TextField from '@material-ui/core/TextField';
+import SaveAltIcon from '@material-ui/icons/SaveAlt';
+import {  useToasts } from 'react-toast-notifications';
 
 export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -14,28 +18,64 @@ export default function Rightbar({ user }) {
   const [followed, setFollowed] = useState(
     currentUser.followings.includes(user?.id)
   );
+  
+ const [getAllUsers, setgetAllUsers] = useState([]);
+  const getUsers = async() => {
+    const res =  await axios.get('/api/users/getUsers');
+    console.log(res);
+    setgetAllUsers(res.data.data);
+  }
+
+  const { addToast } = useToasts();
+
+   const [expand, setExpand] = useState(false);
+
+   const [city , setCity] = useState("");
+   const [from , setFrom] = useState("");
+
+   const savDets =async () => {
+     
+     
+           try {
+             const res = await axios.post(`/api/users/saveDetails/${user._id}`, {
+               city ,
+               from
+             });
+            if(res.data.success === true){
+              //setExpand(!expand);
+              addToast('Update Successfully', { appearance: 'success' , autoDismiss: true });
+              setTimeout(() => {
+                
+                window.location.reload();
+                       } , 1800);
+            }
+           } catch (error) {
+             console.log(error);
+           }
+   }
 
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await axios.get("/users/friends/" + user._id);
+        const friendList = await axios.get("/api/users/friends/" + user._id);
         setFriends(friendList.data);
       } catch (err) {
         console.log(err);
       }
     };
     getFriends();
+    getUsers();
   }, [user]);
 
   const handleClick = async () => {
     try {
       if (followed) {
-        await axios.put(`/users/${user._id}/unfollow`, {
+        await axios.put(`/api/users/${user._id}/unfollow`, {
           userId: currentUser._id,
         });
         dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
-        await axios.put(`/users/${user._id}/follow`, {
+        await axios.put(`/api/users/${user._id}/follow`, {
           userId: currentUser._id,
         });
         dispatch({ type: "FOLLOW", payload: user._id });
@@ -48,19 +88,16 @@ export default function Rightbar({ user }) {
   const HomeRightbar = () => {
     return (
       <>
-        <div className="birthdayContainer">
-          <img className="birthdayImg" src="assets/gift.png" alt="" />
-          <span className="birthdayText">
-            <b>Pola Foster</b> and <b>3 other friends</b> have a birhday today.
-          </span>
-        </div>
-        <img className="rightbarAd" src="assets/ad.png" alt="" />
-        <h4 className="rightbarTitle">Online Friends</h4>
+        <div className="peopleContainer">
+        <div className="rightbarTitle">People around you</div>
+        <div className="peopleContainer"></div>
+
         <ul className="rightbarFriendList">
-          {Users.map((u) => (
-            <Online key={u.id} user={u} />
+          {getAllUsers.map((u) => (
+            <Online key={u.id} userDets={u} />
           ))}
         </ul>
+        </div>
       </>
     );
   };
@@ -78,21 +115,45 @@ export default function Rightbar({ user }) {
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
-            <span className="rightbarInfoValue">{user.city}</span>
+            {expand && <div> <TextField
+          required
+          placeholder="Enter City"
+          onChange={(e) => {setCity(e.target.value)}}
+
+          fullWidth
+          required
+        label="City"
+        value={city}
+        
+        /></div>}
+            {!expand && <span className="rightbarInfoValue">{user.city}</span>}
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInfoValue">{user.from}</span>
+            {expand && <div> <TextField
+          required
+          placeholder="Enter From"
+          onChange={(e) => {setFrom(e.target.value)}}
+          fullWidth
+          required
+        label="From"
+        value={from}
+        
+        /></div>}
+            {!expand && <span className="rightbarInfoValue">{user.from}</span>}
           </div>
+          
           <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">Relationship:</span>
-            <span className="rightbarInfoValue">
-              {user.relationship === 1
-                ? "Single"
-                : user.relationship === 1
-                ? "Married"
-                : "-"}
+           
+            <span className="rightbarInfoValue"  onClick={() => setExpand(!expand)}> 
+            {!expand &&  < EditIcon />}
+            
             </span>
+            <span className="rightbarInfoValue" > 
+            
+            {expand &&  < SaveAltIcon onClick={savDets}/>}
+            </span>
+            
           </div>
         </div>
         <h4 className="rightbarTitle">User friends</h4>

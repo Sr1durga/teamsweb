@@ -2,6 +2,8 @@
     display: flex;
     align-items: center;
     margin-bottom: 15px;
+    
+
   }
   
   .rightbarProfileImgContainer {
@@ -25,6 +27,35 @@
       top: -2px;
       right: 0;
       border: 2px solid white;
+      margin-left: 90%;
+  }
+  .rightbarButton{
+    background:#6264A7;
+    margin-right: -350px;
+    box-shadow:0px 1px 4px rgba(0,0,0,0.11),0px 5px 12px rgba(0,0,0,0.13);
+border-radius:10px;
+color:white;
+height:30px;
+display: inline;
+size:20px;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+
+
+  }
+  .nameContainer{
+    width:100px;
+
+  }
+  .friendsSpace{
+    width: 7px;
+
+  }
+  .friendsContainer{
+    display:flex;
+    flex:inline-block;
+
   }
   
   .rightbarUsername{
