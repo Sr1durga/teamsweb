@@ -74,7 +74,7 @@ export default function Register() {
               Sign Up
             </button>
                       <Typography>
-                        Have and account? <Link to='/login'>Login</Link>
+                        Have an account? <Link to='/login'>Login</Link>
                       </Typography>
             <button className="loginRegisterButton">Log into Account</button>
           </form>

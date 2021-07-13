@@ -52,7 +52,7 @@ export default function Login() {
               )}
             </button>
             <Typography>
-                        Dont have and account? <Link to='/register'>Register</Link>
+                        Dont have an account? <Link to='/register'>Register</Link>
                       </Typography>
             <span className="loginForgot">Forgot Password?</span>
             <button className="loginRegisterButton">
