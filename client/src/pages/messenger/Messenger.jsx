@@ -52,7 +52,7 @@ export default function Messenger() {
     useEffect(() => {
         const getConversations = async () => {
             try {
-                const res = await axios.get("/conversations/" + user._id);
+                const res = await axios.get("/api/conversations/" + user._id);
                 console.log(res.data);
                 setConversations(res.data);
             } catch (err) {
@@ -65,7 +65,7 @@ export default function Messenger() {
     useEffect(() => {
         const getMessages = async () => {
             try {
-                const res = await axios.get("/messages/" + currentChat?._id);
+                const res = await axios.get("/api/messages/" + currentChat?._id);
                 setMessages(res.data)
             } catch (err) {
                 console.log(err)
@@ -93,7 +93,7 @@ export default function Messenger() {
             text: newMessage,
         });
         try {
-            const res = await axios.post("/messages", message);
+            const res = await axios.post("/api/messages", message);
             setMessages([...messages, res.data])
             setNewMessage("");
         } catch (err) {

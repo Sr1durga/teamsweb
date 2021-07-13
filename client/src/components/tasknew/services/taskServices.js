@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "/tasks";
+const apiUrl = "/api/tasks";
 
 export function getTasks() {
     return axios.get(apiUrl);

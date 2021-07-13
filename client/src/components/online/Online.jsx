@@ -21,7 +21,7 @@ const history = useHistory();
    const receiverId = userDets._id;
    console.log(receiverId);
    try {
-    const res = await axios.post('/conversations' ,{
+    const res = await axios.post('/api/conversations' ,{
       senderId,
       receiverId,
     });
@@ -47,7 +47,7 @@ const history = useHistory();
   console.log(followId);
   console.log("r");
   try {
-   const res = await axios.put(`/users/${followId}/follow` , {
+   const res = await axios.put(`/api/users/${followId}/follow` , {
    userId
    });
   

@@ -27,7 +27,7 @@ export default function Topbar() {
 
   const [getAllUsers, setgetAllUsers] = useState([]);
   const getUsers = async() => {
-    const res =  await axios.get('/users/getUsers');
+    const res =  await axios.get('/api/users/getUsers');
     console.log(res);
     setgetAllUsers(res.data.data);
 
