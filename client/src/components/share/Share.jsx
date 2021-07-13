@@ -52,7 +52,7 @@ export default function Share() {
             alt=""
           />
           <input
-            placeholder={"What's in your mind " + user.username + "?"}
+            placeholder={"What's on your mind " + user.username + "?"}
             className="shareInput"
             ref={desc}
           />
