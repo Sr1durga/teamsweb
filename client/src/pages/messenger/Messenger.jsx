@@ -17,12 +17,12 @@ export default function Messenger() {
     const [newMessage, setNewMessage] = useState("");
     const [arrivalMessage, setArrivalMessage] = useState(null);
     const [onlineUsers, setOnlineUsers] = useState([]);
-    const socket = useRef(io("ws://localhost:8800"));
+    const socket = useRef(io("https://socket-teams-backend.herokuapp.com"));
     const { user } = useContext(AuthContext);
     const scrollRef = useRef();
 
     useEffect(() => {
-        socket.current = io("ws://localhost:8800");
+        socket.current = io("https://socket-teams-backend.herokuapp.com");
         socket.current.on("getMessage", (data) => {
             setArrivalMessage({
                 sender: data.senderId,

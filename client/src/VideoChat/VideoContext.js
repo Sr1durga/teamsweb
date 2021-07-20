@@ -5,7 +5,7 @@ import Peer from 'simple-peer';
 const SocketContext = createContext();
 //var socket = io('https://localhost:3000', { transport : ['websocket'] });
 
-const socket = io('http://localhost:8800');
+const socket = io('https://socket-teams-backend.herokuapp.com');
 //const socket = io('https://warm-wildwood-81069.herokuapp.com');
 
 const ContextProvider = ({ children }) => {
